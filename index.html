@@ -1,1 +1,270 @@
-<h1>Hello</h1>
+<html>
+<head>
+    <title>DP - Reliability Index Dashboard</title>
+    <!-- Material Design Lite -->
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.cyan-blue.min.css"/>
+    <!-- Material Design icon font -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <style>
+
+        .graph{
+            height:70px;
+            width: 380px;
+            background-color: #efefef;
+        }
+        .sidebar .mdl-grid {
+            border-bottom: 1px solid #efefef;
+        }
+
+        .mdl-slider__container{
+            margin: 8px -20px;
+            width: 200px
+        }
+
+        .mdl-textfield{
+            padding:0;
+            width:50px;
+        }
+
+        .mdl-textfield__label {
+            top: 4px
+        }
+
+        .mdl-textfield__label:after {
+           bottom: 0
+        }
+
+        .mdl-textfield--floating-label .mdl-textfield__label{
+            top: 15px;
+        }
+
+        .mdl-cell label{
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .mdl-radio{
+            padding-right: 10px;
+        }
+
+    </style>
+</head>
+<body>
+<!-- Uses a transparent header that draws on top of the layout's background -->
+<div class="demo-layout-transparent mdl-layout mdl-js-layout">
+    <header class="mdl-layout__header">
+        <div class="mdl-layout__header-row">
+            <!-- Title -->
+            <span class="mdl-layout-title">DP - Reliability Index</span>
+            <!-- Add spacer, to align navigation to the right -->
+            <div class="mdl-layout-spacer"></div>
+            <!-- Navigation -->
+        </div>
+    </header>
+    <main class="mdl-layout__content">
+        <div class="mdl-grid sidebar">
+            <div class="mdl-cell mdl-cell--4-col">
+                    <div class="mdl-grid">
+                            <div class="mdl-cell mdl-cell--12-col">
+                                    <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="dp-class-all">
+                                        <input type="radio" id="dp-class-all" class="mdl-radio__button" name="dp-class" value="1" checked>
+                                        <span class="mdl-radio__label">Normal</span>
+                                    </label>
+                                    <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="dp-class-1">
+                                        <input type="radio" id="dp-class-1" class="mdl-radio__button" name="dp-class" value="0.8">
+                                        <span class="mdl-radio__label">DP1 Class</span>
+                                    </label>
+                                    <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="dp-class-2">
+                                        <input type="radio" id="dp-class-2" class="mdl-radio__button" name="dp-class" value="0.6">
+                                        <span class="mdl-radio__label">DP2 Class</span>
+                                    </label>
+                                    <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="dp-class-3">
+                                        <input type="radio" id="dp-class-3" class="mdl-radio__button" name="dp-class" value="0.3">
+                                        <span class="mdl-radio__label">DP3 Class</span>
+                                    </label>
+                            </div>    
+                    </div>
+                <div class="mdl-grid">
+                    <div class="mdl-cell mdl-cell--6-col">
+                        <b>Sub-system status</b>
+                    </div>
+                </div>
+                <div class="mdl-grid">
+                    <div class="mdl-cell mdl-cell--4-col">
+                        <label>[A1] Reference Systems</label>
+                        <input name="a1" id="a1" class="form-slider mdl-slider mdl-js-slider" type="range" min="0"
+                               max="1"
+                               value="0"
+                               tabindex="0" step="0.01">
+                        <span>A1: </span>
+                        <div id="a1-number" class="form-number mdl-textfield mdl-js-textfield">
+                            <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="a1-val" value="0">
+                        </div>
+                        <span>W: </span>
+                        <div id="a1-weight" class="mdl-textfield mdl-js-textfield">
+                            <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="a1-w" value="20">
+                        </div>
+                    </div>
+                    <div class="mdl-cell mdl-cell---col">
+                        <div class="graph" id="a1-graph"></div>
+                    </div>
+                </div>
+
+                <div class="mdl-grid">
+                    <div class="mdl-cell mdl-cell--4-col">
+                        <label>[A2] DP Control System</label>
+                        <input name="a2" id="a2" class="form-slider mdl-slider mdl-js-slider" type="range" min="0"
+                               max="1"
+                               value="0"
+                               tabindex="0" step="0.01">
+                        <span>A2: </span>
+                        <div id="a2-number" class="form-number mdl-textfield mdl-js-textfield">
+                            <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="a2-val" value="0">
+                        </div>
+                        <span>W: </span>
+                        <div id="a2-weight" class="mdl-textfield mdl-js-textfield">
+                            <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="a2-w" value="10">
+                        </div>
+                    </div>
+                    <div class="mdl-cell mdl-cell--8-col">
+                        <div class="graph" id="a2-graph"></div>
+                    </div>
+                </div>
+
+                <div class="mdl-grid">
+                    <div class="mdl-cell mdl-cell--4-col">
+                        <label>[A3] Thruster / Propulsion System</label>
+                        <input name="a3" id="a3" class="form-slider mdl-slider mdl-js-slider" type="range" min="0"
+                               max="1"
+                               value="0"
+                               tabindex="0" step="0.01">
+                        <span>A3: </span>
+                        <div id="a3-number" class="form-number mdl-textfield mdl-js-textfield">
+                            <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="a3-val" value="0">
+                        </div>
+                        <span>W: </span>
+                        <div id="a3-weight" class="mdl-textfield mdl-js-textfield">
+                            <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="a3-w" value="15">
+                        </div>
+                    </div>
+                    <div class="mdl-cell mdl-cell--8-col">
+                        <div class="graph" id="a3-graph"></div>
+                    </div>
+                </div>
+
+                <div class="mdl-grid">
+                    <div class="mdl-cell mdl-cell--4-col">
+                        <label>[A4] Power System</label>
+                        <input name="a4" id="a4" class="form-slider mdl-slider mdl-js-slider" type="range" min="0"
+                               max="1"
+                               value="0"
+                               tabindex="0" step="0.01">
+                        <span>A4: </span>
+                        <div id="a4-number" class="form-number mdl-textfield mdl-js-textfield">
+                            <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="a4-val" value="0">
+                        </div>
+                        <span>W: </span>
+                        <div id="a4-weight" class="mdl-textfield mdl-js-textfield">
+                            <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="a4-w" value="10">
+                        </div>
+                    </div>
+                    <div class="mdl-cell mdl-cell--8-col">
+                        <div class="graph" id="a4-graph"></div>
+                    </div>
+                </div>
+
+                <div class="mdl-grid">
+                    <div class="mdl-cell mdl-cell--4-col">
+                        <label>[A5] Electrical System</label>
+                        <input name="a5" id="a5" class="form-slider mdl-slider mdl-js-slider" type="range" min="0"
+                               max="1"
+                               value="0"
+                               tabindex="0" step="0.01">
+                        <span>A5: </span>
+                        <div id="a5-number" class="form-number mdl-textfield mdl-js-textfield">
+                            <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="a5-val" value="0">
+                        </div>
+                        <span>W: </span>
+                        <div id="a5-weight" class="mdl-textfield mdl-js-textfield">
+                            <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="a5-w" value="5">
+                        </div>
+                    </div>
+                    <div class="mdl-cell mdl-cell--8-col">
+                        <div class="graph" id="a5-graph"></div>
+                    </div>
+                </div>
+
+                <div class="mdl-grid">
+                    <div class="mdl-cell mdl-cell--4-col">
+                        <label>[A6] Environment System</label>
+                        <input name="a6" id="a6" class="form-slider mdl-slider mdl-js-slider" type="range" min="0"
+                               max="1"
+                               value="0"
+                               tabindex="0" step="0.01">
+                        <span>A6: </span>
+                        <div id="a6-number" class="form-number mdl-textfield mdl-js-textfield">
+                            <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="a6-val" value="0">
+                        </div>
+                        <span>W: </span>
+                        <div id="a6-weight" class="mdl-textfield mdl-js-textfield">
+                            <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="a6-w" value="10">
+                        </div>
+                    </div>
+                    <div class="mdl-cell mdl-cell--8-col">
+                        <div class="graph" id="a6-graph"></div>
+                    </div>
+                </div>
+
+                <div class="mdl-grid">
+                    <div class="mdl-cell mdl-cell--4-col">
+                        <label>[A7] Environment System</label>
+                        <input name="a7" id="a7" class="form-slider mdl-slider mdl-js-slider" type="range" min="0"
+                               max="1"
+                               value="0"
+                               tabindex="0" step="0.01">
+                        <span>A7: </span>
+                        <div id="a7-number" class="form-number mdl-textfield mdl-js-textfield">
+                            <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="a7-val" value="0">
+                        </div>
+                        <span>W: </span>
+                        <div id="a7-weight" class="mdl-textfield mdl-js-textfield">
+                            <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="a7-w" value="30">
+                        </div>
+                    </div>
+                    <div class="mdl-cell mdl-cell--8-col">
+                        <div class="graph" id="a7-graph"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="mdl-cell mdl-cell--8-col">
+                <div class="mdl-grid">
+                    <div id="ri-graph"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+</body>
+</html>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+<script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="charts.js"></script>
+
+<script>
+    $(document).ready(function(){
+        $(".form-slider").on("input", function(event){
+            var id = event.target.id
+            var target = "#"+id+"-number";
+            $(target).get(0).MaterialTextfield.change(this.value);
+        })
+
+        $(".form-number").keyup(function(event){
+            var id = event.target.id
+            var target = "#"+id.split("-")[0]
+            $(target).get(0).MaterialSlider.change($("#"+id).val());
+        })
+    })
+</script>
