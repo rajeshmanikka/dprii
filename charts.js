@@ -50,8 +50,8 @@
 
     function getFromInput(metric){
         var id =  "#"+metric+"-val";
-        var random = Math.random();
-        $(id).val(random);
+        //var random = Math.random();
+        //$(id).val(random);
         return parseFloat($(id).val());
     }
 
