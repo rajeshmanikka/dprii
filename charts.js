@@ -50,8 +50,6 @@
 
     function getFromInput(metric){
         var id =  "#"+metric+"-val";
-        //var random = Math.random();
-        //$(id).val(random);
         return parseFloat($(id).val());
     }
 
@@ -67,14 +65,14 @@
           }
           return data;
     }
-  
+
   function seriesSettings(metric){
     return {series: [{
         name: metric.toUpperCase() + ' data',
         data: datapoint(metric)
       }]}
   }
-  
+
   var a1ChartSetting = $.extend({}, chartSettings("a1"), commonOptions, seriesSettings("a1"))
   var a2ChartSetting = $.extend({}, chartSettings("a2"), commonOptions, seriesSettings("a2"))
   var a3ChartSetting = $.extend({}, chartSettings("a3"), commonOptions, seriesSettings("a3"))
