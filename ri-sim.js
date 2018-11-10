@@ -71,55 +71,55 @@ var chartRiSim = Highcharts.chart('container-ri-sim', Highcharts.merge(gaugeOpti
 }));
 
 
-var chartRiRt = Highcharts.chart('container-ri-rt', Highcharts.merge(gaugeOptions, {
-    pane: {
-        center: ['50%', '80%'],
-        size: '100%',
-        startAngle: -90,
-        endAngle: 90,
-        background: {
-            backgroundColor: (Highcharts.theme && Highcharts.theme.background2) || '#EEE',
-            innerRadius: '60%',
-            outerRadius: '100%',
-            shape: 'arc'
-        }
-    },
-    yAxis: {
-        min: 0,
-        max: 100,
-        title: {
-            text: 'Real Time Reliability Index'
-        }
-    },
-
-    credits: {
-        enabled: false
-    },
-
-    series: [{
-        name: 'Real Time Reliability Index',
-        data: [0],
-        dataLabels: {
-            format: '<div style="text-align:center"><span style="font-size:25px;color:' +
-                ((Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black') + '">{y}</span><br/>' +
-                   '<span style="font-size:12px;color:silver"></span></div>'
-        },
-        tooltip: {
-            valueSuffix: ' %'
-        }
-    }]
-
-}));
-
-
-setInterval(function () {
-    var point,
-        newVal,
-        inc;
-
-    if (chartRiRt) {
-        point = chartRiRt.series[0].points[0];
-        value = (Math.round(calculate_rt() * 100) / 100)* 100
-        point.update(value);
-    }
-}, 1000);
+//var chartRiRt = Highcharts.chart('container-ri-rt', Highcharts.merge(gaugeOptions, {
+//    pane: {
+//        center: ['50%', '80%'],
+//        size: '100%',
+//        startAngle: -90,
+//        endAngle: 90,
+//        background: {
+//            backgroundColor: (Highcharts.theme && Highcharts.theme.background2) || '#EEE',
+//            innerRadius: '60%',
+//            outerRadius: '100%',
+//            shape: 'arc'
+//        }
+//    },
+//    yAxis: {
+//        min: 0,
+//        max: 100,
+//        title: {
+//            text: 'Real Time Reliability Index'
+//        }
+//    },
+//
+//    credits: {
+//        enabled: false
+//    },
+//
+//    series: [{
+//        name: 'Real Time Reliability Index',
+//        data: [0],
+//        dataLabels: {
+//            format: '<div style="text-align:center"><span style="font-size:25px;color:' +
+//                ((Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black') + '">{y}</span><br/>' +
+//                   '<span style="font-size:12px;color:silver"></span></div>'
+//        },
+//        tooltip: {
+//            valueSuffix: ' %'
+//        }
+//    }]
+//
+//}));
+//
+//
+//setInterval(function () {
+//    var point,
+//        newVal,
+//        inc;
+//
+//    if (chartRiRt) {
+//        point = chartRiRt.series[0].points[0];
+//        value = (Math.round(calculate_rt() * 100) / 100)* 100
+//        point.update(value);
+//    }
+//}, 1000);
