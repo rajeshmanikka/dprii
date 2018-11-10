@@ -110,3 +110,16 @@ var chartRiRt = Highcharts.chart('container-ri-rt', Highcharts.merge(gaugeOption
     }]
 
 }));
+
+
+setInterval(function () {
+    var point,
+        newVal,
+        inc;
+
+    if (chartRiRt) {
+        point = chartRiRt.series[0].points[0];
+        value = (Math.round(calculate_rt() * 100) / 100)* 100
+        point.update(value);
+    }
+}, 1000);
