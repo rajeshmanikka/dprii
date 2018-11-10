@@ -26,7 +26,7 @@ Highcharts.chart('ri-graph', {
     },
 
     title: {
-        text: 'Live random data'
+        text: 'Real time DP-RI data'
     },
     xAxis: {
         type: 'datetime',
