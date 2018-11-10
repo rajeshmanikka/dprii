@@ -47,7 +47,7 @@ Highcharts.chart('ri-graph', {
         pointFormat: '{point.x:%Y-%m-%d %H:%M:%S}<br/>{point.y:.2f}'
     },
     legend: {
-        enabled: false
+        enabled: true
     },
     exporting: {
         enabled: false
