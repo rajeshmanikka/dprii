@@ -20,7 +20,7 @@ Highcharts.chart('ri-graph', {
             }
         }
     },
-
+    credits: {enabled: false},
     time: {
         useUTC: true
     },
