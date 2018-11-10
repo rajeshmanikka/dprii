@@ -70,6 +70,13 @@ var chartRiSim = Highcharts.chart('container-ri-sim', Highcharts.merge(gaugeOpti
 
 }));
 
+$("#sim-calc").click(function(){
+    value = simulate_dp_ri()
+    point = chartRiSim.series[0].points[0]
+    console.log(value)
+    point.update(value*100)
+})
+
 
 //var chartRiRt = Highcharts.chart('container-ri-rt', Highcharts.merge(gaugeOptions, {
 //    pane: {
