@@ -73,13 +73,17 @@
       }]}
   }
 
-  var a1ChartSetting = $.extend({}, chartSettings("a1"), commonOptions, seriesSettings("a1"))
-  var a2ChartSetting = $.extend({}, chartSettings("a2"), commonOptions, seriesSettings("a2"))
-  var a3ChartSetting = $.extend({}, chartSettings("a3"), commonOptions, seriesSettings("a3"))
-  var a4ChartSetting = $.extend({}, chartSettings("a4"), commonOptions, seriesSettings("a4"))
-  var a5ChartSetting = $.extend({}, chartSettings("a5"), commonOptions, seriesSettings("a5"))
-  var a6ChartSetting = $.extend({}, chartSettings("a6"), commonOptions, seriesSettings("a6"))
-  var a7ChartSetting = $.extend({}, chartSettings("a7"), commonOptions, seriesSettings("a7"))
+  function colorOptions(color){
+    return {plotOptions:{series:{color:color}}}
+  }
+
+  var a1ChartSetting = $.extend(colorOptions("#4fafdc"), chartSettings("a1"), commonOptions, seriesSettings("a1"))
+  var a2ChartSetting = $.extend(colorOptions("#479b40"), chartSettings("a2"), commonOptions, seriesSettings("a2"))
+  var a3ChartSetting = $.extend(colorOptions("#6e6277"), chartSettings("a3"), commonOptions, seriesSettings("a3"))
+  var a4ChartSetting = $.extend(colorOptions("#1e254f"), chartSettings("a4"), commonOptions, seriesSettings("a4"))
+  var a5ChartSetting = $.extend(colorOptions("#04348e"), chartSettings("a5"), commonOptions, seriesSettings("a5"))
+  var a6ChartSetting = $.extend(colorOptions("#a1bf9b"), chartSettings("a6"), commonOptions, seriesSettings("a6"))
+  var a7ChartSetting = $.extend(colorOptions("#ea8408"), chartSettings("a7"), commonOptions, seriesSettings("a7"))
 
   Highcharts.chart('a1-graph',a1ChartSetting);
   Highcharts.chart('a2-graph',a2ChartSetting);
