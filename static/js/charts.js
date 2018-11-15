@@ -23,7 +23,17 @@
     tooltip: tooltipOptions,
     legend: {enabled: false},
     exporting: {enabled: false},
-    credits: {enabled: false}
+    credits: {enabled: false},
+//    plotOptions:{
+//        series:{
+//            dataLabels:{
+//                enabled: true,
+//                formatter: function() {
+//                    return this.y.toFixed(2);
+//                }
+//            }
+//        }
+//    }
   }
 
   function chartSettings(metric){
