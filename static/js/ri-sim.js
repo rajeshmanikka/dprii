@@ -35,7 +35,10 @@ var gaugeOptions = {
             dataLabels: {
                 y: 5,
                 borderWidth: 0,
-                useHTML: true
+                useHTML: true,
+                formatter: function() {
+                    return this.percentage.toFixed(2) + '%';
+                }
             }
         }
     }

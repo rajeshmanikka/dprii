@@ -57,6 +57,16 @@ Highcharts.chart('ri-graph', {
             color: '#808080'
         }]
     },
+    plotOptions: {
+        series:{
+            dataLabels:{
+                enabled: true,
+                formatter: function() {
+                    return this.y.toFixed(2);
+                }
+            }
+        }
+    },
     tooltip: {
         headerFormat: '<b>{series.name}</b><br/>',
         pointFormat: '{point.x:%Y-%m-%d %H:%M:%S}<br/>{point.y:.2f}'
