@@ -20,7 +20,7 @@ var gaugeOptions = {
     yAxis: {
         stops: [
             [0.4, '#DF5353'], // red
-            [0.8, '#DDDF0D'], // yellow
+            [0.8, '#ffd966ff'], // yellow
             [1, '#55BF3B'], // green
         ],
         lineWidth: 0,

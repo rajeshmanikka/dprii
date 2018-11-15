@@ -10,12 +10,27 @@ Highcharts.chart('ri-graph', {
                 var predicted = this.series[0];
                 var calculated = this.series[1];
                 setInterval(function () {
-                    var x = (new Date()).getTime(), // current time
-                        pred_y = Math.random(),
-                        calc_y = calculate_rt();
-
-                    predicted.addPoint([x, pred_y], false, true);
+                    var x = (new Date()).getTime() // current time
+                    var calc_y = calculate_rt();
                     calculated.addPoint([x, calc_y], true, true);
+
+                    var [a1, w1, a2, w2, a3, w3, a4, w4, a5, w5, a6, w6, a7, w7, k] = get_rt_values();
+                    $.ajax({
+                        type: "GET",
+                        url: "/predicted",
+                        data:{  "a1":a1, "w1":w1, "a2":a2, "w2":w2, "a3":a3, "w3":w3, "a4":a4,
+                                "w4":w4, "a5":a5, "w5":w5, "a6":a6, "w6":w6, "a7":a7, "w7":w7, "k":k },
+                        success: function(response){
+                            console.log(response)
+                            pred_y = parseFloat(response)
+                            predicted.addPoint([x, pred_y], false, true);
+                        },
+                        error: function(xhr){
+                            console.log("error fetching predicted value!")
+                            predicted.addPoint([x, 0], false, true);
+                        },
+                        cache: false
+                    })
                 }, 1000);
             }
         }

@@ -70,8 +70,9 @@
             height: 280px
         }
 
-
-
+        .legend{
+            padding-top: 130px;
+        }
     </style>
 </head>
 <body>
@@ -97,7 +98,7 @@
                     <div class="mdl-cell mdl-cell--12-col">
                         <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="dp-class-1">
                             <input type="radio" id="dp-class-1" class="mdl-radio__button" name="dp-class"
-                                   value="0.8">
+                                   value="0.3" checked>
                             <span class="mdl-radio__label">DP1 Class</span>
                         </label>
                         <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="dp-class-2">
@@ -107,7 +108,7 @@
                         </label>
                         <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="dp-class-3">
                             <input type="radio" id="dp-class-3" class="mdl-radio__button" name="dp-class"
-                                   value="0.3">
+                                   value="0.8">
                             <span class="mdl-radio__label">DP3 Class</span>
                         </label>
                     </div>
@@ -352,7 +353,7 @@
                                 <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="sim-dp-class-1">
                                     <input type="radio" id="sim-dp-class-1" class="mdl-radio__button"
                                            name="sim-dp-class"
-                                           value="0.8">
+                                           value="0.3" checked>
                                     <span class="mdl-radio__label">DP1 Class</span>
                                 </label>
                                 <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="sim-dp-class-2">
@@ -364,7 +365,7 @@
                                 <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="sim-dp-class-3">
                                     <input type="radio" id="sim-dp-class-3" class="mdl-radio__button"
                                            name="sim-dp-class"
-                                           value="0.3">
+                                           value="0.8">
                                     <span class="mdl-radio__label">DP3 Class</span>
                                 </label>
                                 <br><br>
@@ -375,8 +376,12 @@
                             </div>
                         </div>
                         <div class="mdl-grid">
-                            <div class="mdl-cell mdl-cell--12-col">
+                            <div class="mdl-cell mdl-cell--10-col">
                                 <div id="container-ri-sim" class="container"></div>
+
+                            </div>
+                            <div class="mdl-cell mdl-cell--2-col">
+                                <img class="legend" src='{{url_for("static", filename="img/legend.png")}}'>
                             </div>
                         </div>
                     </div>
@@ -395,10 +400,10 @@
 <script src="https://code.highcharts.com/highcharts-more.js"></script>
 <script src="https://code.highcharts.com/modules/solid-gauge.js"></script>
 
-<script src="dp-ri.js"></script>
-<script src="charts.js"></script>
-<script src="ri-chart.js"></script>
-<script src="ri-sim.js"></script>
+<script src="{{ url_for('static', filename='js/dp-ri.js') }}"></script>
+<script src="{{ url_for('static', filename='js/charts.js') }}"></script>
+<script src="{{ url_for('static', filename='js/ri-chart.js') }}"></script>
+<script src="{{ url_for('static', filename='js/ri-sim.js') }}"></script>
 
 <script>
     $(document).ready(function(){
